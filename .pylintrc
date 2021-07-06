@@ -1,0 +1,4 @@
+[MASTER]
+extension-pkg-whitelist=pydantic
+classmethod-decorators=classmethod,validator
+good-names=f
