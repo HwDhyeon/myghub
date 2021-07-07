@@ -42,7 +42,7 @@ class IssuesService:
                 continue
             if arg.search_finished_at < issue.created_at:
                 continue
-            if issue.state == 'close':
+            if issue.state == 'closed':
                 if issue.closed_at < arg.search_started_at:
                     continue
                 if arg.search_finished_at < issue.closed_at:
