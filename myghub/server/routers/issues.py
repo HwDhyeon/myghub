@@ -5,11 +5,7 @@ from myghub.server.services.issues import IssuesService
 from myghub.server.models.issue import GetIssues, Issues
 
 router = APIRouter(
-    prefix='/issues',
-    tags=['issues'],
-    responses={404: {
-        'description': 'Not Found'
-    }}
+    prefix='/issues', tags=['issues'], responses={404: {'description': 'Not Found'}}
 )
 
 service = IssuesService()

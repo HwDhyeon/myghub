@@ -27,14 +27,12 @@ class IssuesService:
         if arg.state not in ['all', 'open', 'closed']:
             raise HTTPException(
                 status_code=400,
-                detail='State must be one of ["all", "open", "closed"].'
+                detail='State must be one of ["all", "open", "closed"].',
             )
 
         repo = self._gh.get_repo(arg.repository)
         issues = repo.get_issues(
-            since=arg.search_started_at,
-            sort='created_at',
-            state=arg.state
+            since=arg.search_started_at, sort='created_at', state=arg.state
         )
 
         data = Issues(counts=0, issues=[])
@@ -55,7 +53,7 @@ class IssuesService:
                 number=issue.number,
                 state=issue.state,
                 created_at=None,
-                closed_at=None
+                closed_at=None,
             )
 
             if issue.created_at:

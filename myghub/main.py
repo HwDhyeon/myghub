@@ -31,7 +31,7 @@ class Getter:
                 state=state,
                 search_started_at=search_started_at,
                 search_finished_at=search_finished_at,
-                datetime_format=datetime_format
+                datetime_format=datetime_format,
             )
         )
 

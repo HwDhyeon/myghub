@@ -7,9 +7,7 @@ class TimeMachine:
     """Change String to datetime or datetime to String"""
 
     def str_to_dt(
-        self,
-        dt_str: str,
-        dt_format: str = '%Y-%m-%d %H:%M:%S'
+        self, dt_str: str, dt_format: str = '%Y-%m-%d %H:%M:%S'
     ) -> datetime.datetime:
         """Change str to datetime
 
@@ -27,9 +25,7 @@ class TimeMachine:
         return dt_obj
 
     def dt_to_str(
-        self,
-        dt_obj: datetime.datetime,
-        dt_format: str = '%Y-%m-%d %H:%M:%S'
+        self, dt_obj: datetime.datetime, dt_format: str = '%Y-%m-%d %H:%M:%S'
     ) -> str:
         """Change datetime to str
 
