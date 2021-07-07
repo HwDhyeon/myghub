@@ -80,7 +80,7 @@ class TestIssue(unittest.TestCase):
                 self.assertIsNotNone(issue.closed_at)
 
     def test_get_all_issues_invalid_state(self):
-        def call():
+        with self.assertRaises(HTTPException):
             now, prev_month = get_two_dates()
 
             _ = self.service.get_all_issues(
@@ -91,8 +91,6 @@ class TestIssue(unittest.TestCase):
                     search_finished_at=self.dt_tool.dt_to_str(now)
                 )
             )
-
-        self.assertRaises(HTTPException, call)
 
 if __name__ == '__main__':
     unittest.main()
