@@ -51,6 +51,8 @@ class IssuesService:
             issue_obj = Issue(
                 title=issue.title,
                 number=issue.number,
+                author=issue.user.login,
+                labels=[i.name for i in issue.labels],
                 state=issue.state,
                 created_at=None,
                 closed_at=None,

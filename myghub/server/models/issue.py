@@ -13,8 +13,8 @@ class GetIssues(BaseModel):
     """Object for /issues"""
 
     repository: str
+    state: str = 'all'
     datetime_format: str = '%Y-%m-%d %H:%M:%S'
-    state: str
     search_started_at: datetime.datetime
     search_finished_at: datetime.datetime
 
@@ -31,6 +31,8 @@ class Issue(BaseModel):
 
     title: str
     number: int
+    author: str
+    labels: list[str]
     state: str
     created_at: Optional[str]
     closed_at: Optional[str]
