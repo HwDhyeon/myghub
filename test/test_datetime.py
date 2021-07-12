@@ -18,7 +18,10 @@ class TestTimeMachine(unittest.TestCase):
         self.assertEqual(dt.second, 59)
 
     def test_str_to_dt_with_utcdatetime_format(self):
-        dt = self.timemachine.str_to_dt('2021-07-07T12:31:59', '%Y-%m-%dT%H:%M:%S')
+        dt = self.timemachine.str_to_dt(
+            '2021-07-07T12:31:59',
+            '%Y-%m-%dT%H:%M:%S'
+        )
         self.assertIsInstance(dt, datetime.datetime)
         self.assertEqual(dt.year, 2021)
         self.assertEqual(dt.month, 7)
