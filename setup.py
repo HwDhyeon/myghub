@@ -6,7 +6,7 @@ from setuptools import find_packages
 
 setup_options = {
     'name': 'my-github-tracker',
-    'version': '0.2.0',
+    'version': '0.2.4',
     'description': 'Tracking all GitHub API',
     'author': 'HwDhyeon',
     'author_email': 'dev_donghyun@kakao.com',
