@@ -12,4 +12,4 @@ def use_env():
 
 use_env()
 
-GH_TOKEN = os.getenv('GH_TOKEN', None)
+GH_TOKEN = os.getenv('GH_TOKEN', '')
