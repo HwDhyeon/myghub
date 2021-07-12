@@ -4,7 +4,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from myghub.server.routers import issues
 
-tags_metadata = [{'name': 'issues', 'description': 'Controls for GitHub issues.'}]
+tags_metadata = [
+    {
+        'name': 'issues',
+        'description': 'Controls for GitHub issues.'
+    }
+]
 
 app = FastAPI(
     title='My-GitHub API',
