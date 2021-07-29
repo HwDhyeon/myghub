@@ -64,4 +64,9 @@ GitHub API wrapper
 2. Send HTTP Requst for MyGHub Server
 
     ```bash
+    curl -i --location \
+    --header "Content-Type: application/json" \
+    --request POST \
+    --data '{"repository": "mobigen/IRIS", "search_started_at": "2021-01-01 00:00:00","search_finished_at": "2021-01-31 23:59:59", "state": "all"}' \
+    http://SERVER/issues/
     ```
