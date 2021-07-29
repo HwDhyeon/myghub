@@ -42,15 +42,17 @@ async def read_issues_for_iris(get_issues: GetIssues) -> IRISResponse:
 
     data = service.get_all_issues(get_issues)
 
-    fields = []
+    fields = [
+        IRISResponseField(
+            name=key,
+            type=typecast_for_iris(value)
+        )
+        for key, value in data.issues[0].dict().items()
+    ]
     results = []
     for issue in data.issues:
         dictissue = issue.dict()
         dictissue['labels'] = str(dictissue['labels'])
-        for key, value in dictissue.items():
-            fields.append(
-                IRISResponseField(name=key, type=typecast_for_iris(value))
-            )
         results.append(list(dictissue.values()))
 
     return IRISResponse(data=IRISResponseData(fields=fields, results=results))
