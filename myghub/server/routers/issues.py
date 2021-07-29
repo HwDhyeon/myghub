@@ -1,6 +1,5 @@
 """GitHub Issues Router for Server"""
 
-from typing import Dict
 from fastapi import APIRouter
 from myghub.utils import typecast_for_iris
 from myghub.server.services.issues import IssuesService
@@ -10,11 +9,7 @@ from myghub.server.models.issue import GetIssues, Issues
 router = APIRouter(
     prefix='/issues',
     tags=['issues'],
-    responses={
-        404: {
-            'description': 'Not Found'
-        }
-    }
+    responses={404: {'description': 'Not Found'}}
 )
 
 service = IssuesService()
@@ -54,16 +49,8 @@ async def read_issues_for_iris(get_issues: GetIssues) -> IRISResponse:
         dictissue['labels'] = str(dictissue['labels'])
         for key, value in dictissue.items():
             fields.append(
-                IRISResponseField(
-                    name=key,
-                    type=typecast_for_iris(value)
-                )
+                IRISResponseField(name=key, type=typecast_for_iris(value))
             )
         results.append(list(dictissue.values()))
 
-    return IRISResponse(
-        data=IRISResponseData(
-            fields=fields,
-            results=results
-        )
-    )
+    return IRISResponse(data=IRISResponseData(fields=fields, results=results))
