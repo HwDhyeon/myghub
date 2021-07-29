@@ -26,6 +26,9 @@ async def read_issues(get_issues: GetIssues) -> Issues:
 
     Args:
         get_issues (GetIssues): GetIssues object from request json data
+
+    Returns:
+        Issues: Github issues
     """
 
     return service.get_all_issues(get_issues)
@@ -33,6 +36,15 @@ async def read_issues(get_issues: GetIssues) -> Issues:
 
 @router.post('/iris', response_model=IRISResponse)
 async def read_issues_for_iris(get_issues: GetIssues) -> IRISResponse:
+    """Find all issues for repository
+
+    Args:
+        get_issues (GetIssues): GetIssues object from request json data
+
+    Returns:
+        IRISResponse: Issues convert to IRIS REST API spec
+    """
+
     data = service.get_all_issues(get_issues)
 
     fields = []
