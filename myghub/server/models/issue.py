@@ -4,6 +4,7 @@ import datetime
 from typing import Optional
 from pydantic import BaseModel, validator
 from myghub.dt.timemachine import TimeMachine
+from myghub.server.models.milestone import Milestone
 
 
 time_machine = TimeMachine()
@@ -26,6 +27,12 @@ class GetIssues(BaseModel):
         return time_machine.str_to_dt(value, values['datetime_format'])
 
 
+class GetIssuesByMilestone(BaseModel):
+    repository: str
+    state: str = 'all'
+    milestone_title: str
+
+
 class Issue(BaseModel):
     """Issue object"""
 
@@ -36,6 +43,8 @@ class Issue(BaseModel):
     state: str
     created_at: Optional[str]
     closed_at: Optional[str]
+    url: str
+    milestone: Optional[Milestone]
 
 
 class Issues(BaseModel):

@@ -2,23 +2,23 @@ import unittest
 from datetime import datetime, timedelta
 from fastapi.exceptions import HTTPException
 from myghub.server.models.issue import GetIssues, Issue, Issues
-from myghub.server.services.issues import IssuesService
+from myghub.server.services.issue import IssueService
 from myghub.dt.timemachine import TimeMachine
 
 
 def get_two_dates():
     now = datetime.now()
-    now = now.replace(hour=0, minute=0, second=0)
+    now = now.replace(hour=23, minute=59, second=59)
 
     prev_month = now - timedelta(days=30)
-    prev_month = prev_month.replace(hour=23, minute=59, second=59)
+    prev_month = prev_month.replace(hour=0, minute=0, second=0)
 
     return now, prev_month
 
 
 class TestIssue(unittest.TestCase):
     def setUp(self):
-        self.service = IssuesService()
+        self.service = IssueService()
         self.dt_tool = TimeMachine()
 
     def test_get_open_issues(self):
