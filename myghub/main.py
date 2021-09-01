@@ -2,9 +2,9 @@
 
 import fire
 from myghub.server.models.issue import GetIssues
-from myghub.server.services.issues import IssuesService
+from myghub.server.services.issue import IssueService
 
-issue_service = IssuesService()
+issue_service = IssueService()
 
 
 class Getter:

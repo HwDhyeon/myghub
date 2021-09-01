@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 from myghub.utils import typecast_for_iris
-from myghub.server.services.issues import IssuesService
+from myghub.server.services.issue import IssueService
 from myghub.server.models.iris import IRISResponse, IRISResponseField, IRISResponseData
 from myghub.server.models.issue import GetIssues, Issues
 
@@ -12,7 +12,7 @@ router = APIRouter(
     responses={404: {'description': 'Not Found'}}
 )
 
-service = IssuesService()
+service = IssueService()
 
 
 @router.post('/', response_model=Issues)
@@ -52,7 +52,6 @@ async def read_issues_for_iris(get_issues: GetIssues) -> IRISResponse:
     results = []
     for issue in data.issues:
         dictissue = issue.dict()
-        dictissue['labels'] = str(dictissue['labels'])
         results.append(list(dictissue.values()))
 
     return IRISResponse(data=IRISResponseData(fields=fields, results=results))
